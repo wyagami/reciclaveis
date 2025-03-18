@@ -5,6 +5,16 @@ from PIL import Image
 from io import BytesIO
 
 
+with st.sidebar:
+    st.sidebar.header("Reciclaveis")
+    st.sidebar.write("""
+    Insira os itens para construção de um produto com materiais reciclaveis
+                     
+    - Caso tenha alguma idéia para publicarmos, envie uma mensagem para: 11-990000425 (Willian)
+    - Contribua com qualquer valor para mantermos a pagina no ar. PIX (wpyagami@gmail.com)
+    """)
+
+
 def generate_image(prompt, api_key):
     """Gera uma imagem baseada no prompt utilizando a API do Together"""
     try:
@@ -43,11 +53,8 @@ if st.button("Gerar Imagem"):
         st.error("Por favor, insira sua API Key.")
     else:
         items_list = [item.strip() for item in items.split(",") if item.strip()]
-        prompt = f"Crie uma imagem ilustrando os seguintes materiais recicláveis: {', '.join(items_list)}"
+        prompt = f"Crie um objeto utilizando os seguintes materiais recicláveis: {', '.join(items_list)}"
         
-        st.write("Gerando imagem com o seguinte prompt:")
-        st.code(prompt)
-
         try:
             image = generate_image(prompt, api_key)
             st.image(image, caption="Imagem Gerada", use_column_width=True)
