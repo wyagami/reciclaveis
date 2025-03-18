@@ -53,7 +53,7 @@ if st.button("Gerar Imagem"):
         st.error("Por favor, insira sua API Key.")
     else:
         items_list = [item.strip() for item in items.split(",") if item.strip()]
-        prompt = f"Crie um objeto utilizando os seguintes materiais recicláveis: {', '.join(items_list)}"
+        prompt = f"Crie um produto utilizando os seguintes materiais recicláveis: {', '.join(items_list)}. Seja criativo."
         
         try:
             image = generate_image(prompt, api_key)
